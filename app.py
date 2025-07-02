@@ -5,7 +5,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"  # Required for session management
-CORS(app, supports_credentials=True)  # Allow frontend on a different port
+CORS(app, supports_credentials=True)
 
 DATABASE = "users.db"
 
@@ -43,8 +43,7 @@ def get_user_by_username(username):
     conn.close()
     return user
 
-# === Routes ===
-
+# === Register ===
 @app.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
@@ -75,6 +74,7 @@ def register():
 
     return jsonify({"success": True, "message": "User registered successfully", "username": username})
 
+# === Login ===
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -97,18 +97,7 @@ def login():
 
     return jsonify({"success": True, "message": "Logged in successfully", "username": user[1]})
 
-@app.route("/home", methods=["GET"])
-def home():
-    if "username" in session:
-        return jsonify({"logged_in": True, "username": session["username"]})
-    else:
-        return jsonify({"logged_in": False, "message": "User not logged in"}), 401
-
-@app.route("/logout", methods=["POST"])
-def logout():
-    session.clear()
-    return jsonify({"success": True, "message": "Logged out successfully"})
-
+# === Reset Password ===
 @app.route("/reset-password", methods=["POST"])
 def reset_password():
     try:
