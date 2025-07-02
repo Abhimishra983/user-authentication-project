@@ -88,22 +88,6 @@ body.dark-theme .input-group input {
   transform: translateY(-5px);
 }
 
-.story-thumbnails {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-.story-thumbnails img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #3b82f6;
-  padding: 2px;
-  background-color: white;
-}
-
 /* Toggle Buttons */
 .toggle-buttons {
   display: flex;
@@ -176,7 +160,7 @@ body.dark-theme .toggle-buttons button {
   border-radius: 4px;
 }
 
-/* ✅ Show Password Toggle */
+/* Show Password Toggle */
 .password-toggle {
   position: absolute;
   right: 10px;
@@ -247,7 +231,7 @@ button[type="submit"] {
   }
 }
 
-/* 🔄 Responsive Design */
+/* Responsive Design */
 @media screen and (max-width: 500px) {
   .main-layout {
     flex-direction: column;
